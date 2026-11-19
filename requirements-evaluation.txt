@@ -1,0 +1,9 @@
+# Install compatible CUDA torch, torchvision and torchaudio separately.
+# VBench and ImageBind each require their upstream dependencies.
+numpy
+opencv-python
+imageio
+imageio-ffmpeg
+transformers
+Pillow
+soundfile

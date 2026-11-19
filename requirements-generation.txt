@@ -1,0 +1,6 @@
+# Install CUDA PyTorch using the instructions appropriate for your host.
+# Install pinned ComfyUI's own requirements as well.
+numpy
+psutil
+imageio
+imageio-ffmpeg

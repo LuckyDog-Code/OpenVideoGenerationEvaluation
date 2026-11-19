@@ -1,0 +1,90 @@
+{
+  "protocol": "ml_l40s_generation_480p_v3",
+  "status": "pilot_pending",
+  "seed": 20261118,
+  "batch_size": 1,
+  "gpu_count": 1,
+  "gpu": "NVIDIA L40S",
+  "comfyui_commit": "e9afbccc2669677076feb08e52658f129cd8c12b",
+  "launch_flags": [
+    "--fast-disk",
+    "--disable-pinned-memory"
+  ],
+  "cache_policy": "retain_loaders_invalidate_all_generation_nodes_including_negative_text",
+  "memory_policy": "comfy_dynamic_disk_offload",
+  "compile": false,
+  "lora": null,
+  "approximate_cache": false,
+  "cache_threshold": null,
+  "cfg_truncation": null,
+  "context_ir": false,
+  "super_resolution": false,
+  "frame_interpolation": false,
+  "tiled_decode": {
+    "tile_size": 512,
+    "overlap": 64,
+    "temporal_size": 64,
+    "temporal_overlap": 8
+  },
+  "timing": {
+    "primary": "server_text_encode_to_raw_decode_complete",
+    "boundary_cuda_sync": true,
+    "includes_offload": true,
+    "startup_excluded": true,
+    "warmup_excluded": true,
+    "measurements_implemented": true,
+    "preload_excluded": true,
+    "encode_save_excluded": true
+  },
+  "monitoring": {
+    "interval_ms": 200,
+    "gpu": "NVML",
+    "cpu": "process_tree_RSS_PSS_if_available",
+    "allocator": "server_process_torch"
+  },
+  "export": {
+    "library": "imageio",
+    "codec": "libx264",
+    "quality": 8,
+    "macro_block_size": 1,
+    "preset": "medium",
+    "pixel_format": "yuv420p"
+  },
+  "evaluation_view": {
+    "width": 832,
+    "height": 480,
+    "frames": 80,
+    "fps": 16,
+    "duration_s": 5,
+    "spatial": "aspect_fit_letterbox",
+    "temporal": "nearest_timestamp_no_interpolation"
+  },
+  "model": "Wan2.2-T2V-A14B",
+  "width": 832,
+  "height": 480,
+  "frames": 81,
+  "fps": 16,
+  "steps": 20,
+  "cfg": 3.5,
+  "shift": 5,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "negative_prompt": "overexposed, blurry, static image, subtitles, text, watermark, low quality, distorted objects, flickering",
+  "expert_split_step": 10,
+  "model_repo": "Comfy-Org/Wan_2.2_ComfyUI_Repackaged",
+  "model_revision": "ee6f4a40737a995bf5818954cfce6d59443b0f04",
+  "unets": [
+    "wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors",
+    "wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors"
+  ],
+  "loader_weight_dtype": "default",
+  "quantization": "prequantized_fp8_scaled",
+  "text_encoder": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+  "vae": "wan_2.1_vae.safetensors",
+  "video_vae_runtime_dtype": null,
+  "pilot_status": "historical_generation_success_new_measurement_protocol_unverified",
+  "output_spec_source": "832x480 historical verified ComfyUI working point; frame_num=81 and sample_fps=16 from Wan shared config; not official default resolution",
+  "warmup_requests_per_process": 1,
+  "measurement_revision": "a14b_inclusive_generation_v2_with_cpu_nvml_and_decode_verification",
+  "config_id": "wanA14B_1ca8ea139990"
+}

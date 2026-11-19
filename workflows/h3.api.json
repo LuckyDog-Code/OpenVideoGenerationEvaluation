@@ -1,0 +1,51 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    }
+  },
+  "20": {
+    "class_type": "MLMeasuredH3",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "audio_vae": [
+        "4",
+        0
+      ],
+      "payload": "{\"config\": {\"protocol\": \"ml_l40s_generation_480p_v3\", \"status\": \"pilot_pending\", \"seed\": 20261118, \"batch_size\": 1, \"gpu_count\": 1, \"gpu\": \"NVIDIA L40S\", \"comfyui_commit\": \"e9afbccc2669677076feb08e52658f129cd8c12b\", \"launch_flags\": [\"--fast-disk\", \"--disable-pinned-memory\"], \"cache_policy\": \"retain_loaders_invalidate_all_generation_nodes_including_negative_text\", \"memory_policy\": \"comfy_dynamic_disk_offload\", \"compile\": false, \"lora\": null, \"approximate_cache\": false, \"cache_threshold\": null, \"cfg_truncation\": null, \"context_ir\": false, \"super_resolution\": false, \"frame_interpolation\": false, \"tiled_decode\": {\"tile_size\": 512, \"overlap\": 64, \"temporal_size\": 64, \"temporal_overlap\": 8}, \"timing\": {\"primary\": \"server_text_encode_to_raw_video_audio_decode_complete\", \"boundary_cuda_sync\": true, \"includes_offload\": true, \"startup_excluded\": true, \"warmup_excluded\": true, \"measurements_implemented\": true, \"preload_excluded\": true, \"encode_save_excluded\": true}, \"monitoring\": {\"interval_ms\": 200, \"gpu\": \"NVML\", \"cpu\": \"process_tree_RSS_PSS_if_available\", \"allocator\": \"server_process_torch\"}, \"export\": {\"library\": \"imageio\", \"codec\": \"libx264\", \"quality\": 8, \"macro_block_size\": 1, \"preset\": \"medium\", \"pixel_format\": \"yuv420p\", \"implemented\": true}, \"evaluation_view\": {\"width\": 832, \"height\": 480, \"frames\": 80, \"fps\": 16, \"duration_s\": 5, \"spatial\": \"aspect_fit_letterbox\", \"temporal\": \"nearest_timestamp_no_interpolation\"}, \"model\": \"MiniMax-H3-Base-FL2VA\", \"width\": 864, \"height\": 480, \"frames\": 124, \"fps\": 24, \"steps\": 20, \"cfg\": null, \"shift\": null, \"sampler\": \"res_multistep\", \"scheduler\": \"simple\", \"negative_prompt\": null, \"guider\": \"BasicGuider\", \"model_repo\": \"Comfy-Org/MiniMax-H3\", \"model_revision\": \"4b53a35191437de05370da548e59aeabe2a5a09a\", \"unet\": \"minimax_h3_fl2va_pruned_fp8_scaled.safetensors\", \"loader_weight_dtype\": \"default\", \"quantization\": \"prequantized_pruned_fp8_scaled\", \"text_encoder\": \"qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors\", \"vae\": \"minimax_h3_video_vae_fp16.safetensors\", \"audio_vae\": \"minimax_h3_audio_vae_fp32.safetensors\", \"video_vae_runtime_dtype\": null, \"pilot_status\": \"historical_generation_success_weights_removed_new_measurement_protocol_unverified\", \"warmup_requests_per_process\": 1, \"output_spec_source\": {\"file\": \"comfy_extras/nodes_minimax_h3.py\", \"commit\": \"e9afbccc2669677076feb08e52658f129cd8c12b\", \"node\": \"MiniMaxH3ImageToVideo\", \"width\": 1344, \"height\": 768, \"length\": 124, \"fps_source\": \"MiniMax official README 24fps\"}, \"output_dir\": \"runs/h3_480p\", \"base_launch_policy\": \"--fast-disk --disable-pinned-memory\", \"offload_timing\": \"included during generation; preload excluded\", \"resolution_policy\": \"User-selected 480p working point; overrides node default 1344x768\", \"config_id\": \"h3_f0b45beb9e6f\"}, \"sample\": {\"prompt_id\": \"hard_camera_motion_01\", \"prompt\": \"The camera slowly orbits clockwise around a stationary yellow bicycle beside a brick wall, with smooth parallax and consistent geometry. Throughout the shot, keep the described subjects, their appearance, and their spatial relationships consistent. Follow the specified actions and camera movement in a continuous, coherent sequence. Preserve any explicitly static elements. Keep object geometry, lighting, and background structure stable, with clear details and physically plausible changes. Do not introduce additional subjects or unrelated events.\", \"original_prompt\": \"The camera slowly orbits clockwise around a stationary yellow bicycle beside a brick wall, with smooth parallax and consistent geometry.\", \"expanded_prompt\": \"The camera slowly orbits clockwise around a stationary yellow bicycle beside a brick wall, with smooth parallax and consistent geometry. Throughout the shot, keep the described subjects, their appearance, and their spatial relationships consistent. Follow the specified actions and camera movement in a continuous, coherent sequence. Preserve any explicitly static elements. Keep object geometry, lighting, and background structure stable, with clear details and physically plausible changes. Do not introduce additional subjects or unrelated events.\", \"source\": \"self_authored_proposal\", \"expansion_policy\": \"deterministic_semantics_preserving_template_v1\", \"selection_group\": \"camera_motion\", \"seed\": 20261118, \"selection_index\": 11, \"prompt_sha256\": \"75a397e6a04e98fec6e7dee41edfd5c6f2ea6097a8aa53088d28a4685bbcf4f7\", \"evaluation_prompt\": \"The camera slowly orbits clockwise around a stationary yellow bicycle beside a brick wall, with smooth parallax and consistent geometry.\"}, \"name\": \"hard_camera_motion_01_20261118\", \"output_dir\": \"runs/h3_f0b45beb9e6f\"}"
+    }
+  }
+}
